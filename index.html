@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rose-Marie & Marc Grobet | Boulangerie artisanale</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #fbf1e2;
+      color: #2f241d;
+      line-height: 1.6;
+      background-image:
+        radial-gradient(circle at top left, rgba(139, 83, 39, 0.08), transparent 34%),
+        linear-gradient(180deg, #fbf1e2 0%, #fff8ed 100%);
+    }
+
+    p,
+    a,
+    li,
+    span,
+    blockquote {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(251, 241, 226, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(91, 55, 31, 0.12);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #4a2f1f;
+      line-height: 1.2;
+    }
+
+    .logo span {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #8b5327;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.95rem;
+      color: #4a2f1f;
+    }
+
+    .nav-links a:hover {
+      color: #c46a22;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #9b5424;
+      color: white;
+      box-shadow: 0 12px 24px rgba(91, 55, 31, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #7a431d;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #4a2f1f;
+      border: 1px solid rgba(91, 55, 31, 0.18);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: #c46a22;
+    }
+
+    .hero {
+      padding: 78px 0 64px;
+      background:
+        linear-gradient(90deg, rgba(251,241,226,0.97) 0%, rgba(251,241,226,0.86) 48%, rgba(251,241,226,0.26) 100%),
+        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1600&q=80') center/cover;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 620px;
+    }
+
+    .badge {
+      display: inline-flex;
+      background: #f4dfc4;
+      color: #7a431d;
+      border: 1px solid rgba(91, 55, 31, 0.14);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      color: #4a2b19;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #6c4b36;
+      margin-bottom: 30px;
+      max-width: 540px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 44px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #4a2b19;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #7a5942;
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: #fffaf2;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 14px 32px rgba(76, 48, 28, 0.12);
+      border: 1px solid rgba(91, 55, 31, 0.14);
+    }
+
+    .card-image {
+      height: 220px;
+      background: #ead5be;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .card-content h3 {
+      color: #4a2b19;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .card-content p {
+      color: #765943;
+      font-size: 0.98rem;
+    }
+
+    .highlight {
+      background: #3b281d;
+      color: white;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .highlight h2 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.12;
+      margin-bottom: 18px;
+    }
+
+    .highlight p {
+      color: #f1dcc5;
+      font-size: 1.08rem;
+      margin-bottom: 26px;
+    }
+
+    .highlight-box {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 26px;
+      padding: 28px;
+    }
+
+    .highlight-box strong {
+      color: #ffd8a6;
+    }
+
+    .reviews {
+      background: #f3dfc4;
+    }
+
+    .review-card {
+      padding: 26px;
+    }
+
+    .stars {
+      color: #d98928;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .review-card blockquote {
+      color: #5e422f;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .review-card span {
+      color: #8b5327;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .contact-box {
+      background: #fffaf2;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 18px 40px rgba(76, 48, 28, 0.08);
+    }
+
+    .contact-box h3 {
+      color: #4a2b19;
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+    }
+
+    .info-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      color: #6c4b36;
+    }
+
+    .info-list strong {
+      color: #4a2b19;
+    }
+
+    .map-placeholder {
+      min-height: 310px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(91,55,31,0.16), rgba(255,240,221,0.9)),
+        repeating-linear-gradient(45deg, rgba(91,55,31,0.07) 0, rgba(91,55,31,0.07) 2px, transparent 2px, transparent 12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      color: #6c4b36;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 28px 0;
+      background: #2f241d;
+      color: #f4dfc8;
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 850px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 66px 0;
+        background:
+          linear-gradient(180deg, rgba(255,250,243,0.96), rgba(255,250,243,0.84)),
+          url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1600&q=80') center/cover;
+      }
+
+      .cards,
+      .highlight-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#accueil" class="logo">
+        Rose-Marie & Marc Grobet
+        <span>Boulangerie artisanale</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#specialites">Spécialités</a>
+        <a href="#nouveautes">Nouveautés</a>
+        <a href="#avis">Avis clients</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="container hero-content">
+        <span class="badge">Boulangerie locale · Produits frais · Savoir-faire artisanal</span>
+        <h1>Le goût du fait maison, au cœur du quartier.</h1>
+        <p>
+          Découvrez les pains, pâtisseries, tartes et nouveautés de la boulangerie
+          Rose-Marie & Marc Grobet. Une adresse de proximité pour les gourmands,
+          les familles et les pauses de midi.
+        </p>
+        <div class="hero-actions">
+          <a href="#nouveautes" class="btn btn-primary">Voir les nouveautés</a>
+          <a href="#contact" class="btn btn-secondary">Horaires & contact</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="specialites">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nos spécialités</h2>
+          <p>Des produits simples, gourmands et préparés avec soin, à retrouver directement en boulangerie.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&q=80" alt="Pains artisanaux" />
+            </div>
+            <div class="card-content">
+              <h3>Pains artisanaux</h3>
+              <p>Des pains croustillants et généreux pour accompagner les repas du quotidien.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?auto=format&fit=crop&w=900&q=80" alt="Pâtisseries" />
+            </div>
+            <div class="card-content">
+              <h3>Pâtisseries</h3>
+              <p>Une sélection de douceurs pour les envies sucrées, les fêtes et les petits plaisirs.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?auto=format&fit=crop&w=900&q=80" alt="Tarte au riz" />
+            </div>
+            <div class="card-content">
+              <h3>La fameuse tarte au riz</h3>
+              <p>Une spécialité appréciée des clients, parfaite à mettre en avant comme produit phare.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlight" id="nouveautes">
+      <div class="container highlight-grid">
+        <div>
+          <span class="badge">Nouveauté à mettre en avant</span>
+          <h2>Mini-pizzas, snacks et pauses gourmandes.</h2>
+          <p>
+            Une section idéale pour présenter les nouveautés et les produits rapides à emporter,
+            notamment pour les élèves, les parents et les clients de passage.
+          </p>
+          <a href="#contact" class="btn btn-primary">Passer à la boulangerie</a>
+        </div>
+
+        <div class="highlight-box">
+          <p>
+            <strong>Idée commerciale :</strong> mettre à jour cette zone quand un nouveau produit arrive :
+            mini-pizzas, sandwiches, viennoiseries spéciales, produits de saison ou offres du moment.
+          </p>
+          <p>
+            Cela donne au site un côté vivant et encourage les clients à revenir voir les nouveautés.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="avis">
+      <div class="container">
+        <div class="section-title">
+          <h2>Avis clients</h2>
+          <p>Une section “livre d’or” simple pour rassurer les nouveaux clients et valoriser les retours positifs.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card review-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Très bonne boulangerie, produits frais et accueil chaleureux.”</blockquote>
+            <span>— Avis client</span>
+          </article>
+
+          <article class="card review-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“La tarte au riz est excellente, une vraie spécialité de la maison.”</blockquote>
+            <span>— Avis client</span>
+          </article>
+
+          <article class="card review-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Pratique pour une pause rapide, avec de bonnes nouveautés à découvrir.”</blockquote>
+            <span>— Avis client</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Horaires & contact</h2>
+          <p>Toutes les informations utiles en un seul endroit, faciles à consulter depuis un téléphone.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h3>Informations pratiques</h3>
+            <ul class="info-list">
+              <li><strong>Adresse :</strong> à compléter avec l’adresse exacte</li>
+              <li><strong>Téléphone :</strong> à compléter</li>
+              <li><strong>Horaires :</strong> à compléter</li>
+              <li><strong>Facebook :</strong> lien vers la page officielle</li>
+            </ul>
+            <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px;">
+              <a href="#" class="btn btn-primary">Appeler</a>
+              <a href="#" class="btn btn-secondary">Voir Facebook</a>
+            </div>
+          </div>
+
+          <div class="map-placeholder">
+            Emplacement Google Maps<br />
+            à intégrer ici
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Rose-Marie & Marc Grobet · Boulangerie artisanale · Ambiance chaleureuse & rustique
+    </div>
+  </footer>
+</body>
+</html>
